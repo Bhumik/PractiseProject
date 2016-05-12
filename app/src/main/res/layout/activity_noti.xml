@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="simple_notification"
+        android:id="@+id/btnnoti_simple_notification" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="big_notification"
+        android:id="@+id/btnnoti_big_notification" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="progress_notification"
+        android:id="@+id/btnnoti_progress_notification" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button_notifcation"
+        android:id="@+id/btnnoti_button_notifcation" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="setNormalNotification"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnnoti_1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="setBigTextStyleNotification"
+        android:id="@+id/btnnoti_2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="setBigPictureStyleNotification"
+        android:id="@+id/btnnoti_3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="setInboxStyleNotification"
+        android:id="@+id/btnnoti_4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="setCustomViewNotification"
+        android:id="@+id/btnnoti_5" />
+
+</LinearLayout>

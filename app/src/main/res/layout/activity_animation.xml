@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgv_anim"
+        android:layout_width="match_parent"
+        android:src="@mipmap/ic_launcher"
+        android:layout_height="250dp" />
+
+    <LinearLayout
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAnimAllXml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All xml"/>
+        <Button
+            android:id="@+id/btnAnimAllCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Code"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnAnimClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Animation Class"/>
+    <Button
+        android:id="@+id/btnTvcloseAnimClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TVClose Animation Class"/>
+    <Button
+        android:id="@+id/btnCustomAnimClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Animation Class"/>
+
+</LinearLayout>

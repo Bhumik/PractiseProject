@@ -1,4 +1,4 @@
-package com.bhumik.testproject.broadcast;
+package com.bhumik.testproject.broadcastNservice;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.bhumik.testproject.broadcast;
+package com.bhumik.testproject.broadcastNservice;
 
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
@@ -15,15 +15,36 @@ import com.bhumik.testproject.R;
 
 public class BroadcastDemo extends AppCompatActivity {
 
-    Button btnBcastSend,btnToggleService;
-    TextView txtBcastData;
-
-
     public static String ACTIVITY_ACTION_DATA_AVAILABLE = "com.bhumik.testproject.broadcast.ACTIVITY_ACTION_DATA_AVAILABLE";
     public static String ACTIVITY_DATA_RECEIVED = "com.bhumik.testproject.broadcast.ACTIVITY_DATA_RECEIVED";
     public static String SERVICE_ACTION_DATA_AVAILABLE = "com.bhumik.testproject.broadcast.SERVICE_ACTION_DATA_AVAILABLE";
     public static String SERVICE_DATA_RECEIVED = "com.bhumik.testproject.broadcast.SERVICE_DATA_RECEIVED";
+    Button btnBcastSend, btnToggleService;
+    TextView txtBcastData;
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (ACTIVITY_ACTION_DATA_AVAILABLE.equals(action)) {
+                String data = intent.getStringExtra(ACTIVITY_DATA_RECEIVED);
+                txtBcastData.setText("Activity (data Received): \n\t" + data);
+            }
+            if (SERVICE_ACTION_DATA_AVAILABLE.equals(action)) {
+                String data = intent.getStringExtra(SERVICE_DATA_RECEIVED);
+                txtBcastData.setText("Service (data Received): \n\t" + data);
+            }
+        }
+    };
 
+    public static boolean isBroadcastServiceRunning(Context context, Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +81,6 @@ public class BroadcastDemo extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -81,33 +101,6 @@ public class BroadcastDemo extends AppCompatActivity {
         super.onPause();
 
         unregisterReceiver(broadcastReceiver);
-    }
-
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (ACTIVITY_ACTION_DATA_AVAILABLE.equals(action)) {
-                String data = intent.getStringExtra(ACTIVITY_DATA_RECEIVED);
-                txtBcastData.setText("Activity (data Received): \n\t" + data);
-            }
-            if (SERVICE_ACTION_DATA_AVAILABLE.equals(action)) {
-                String data = intent.getStringExtra(SERVICE_DATA_RECEIVED);
-                txtBcastData.setText("Service (data Received): \n\t" + data);
-            }
-        }
-    };
-
-
-
-    public static boolean isBroadcastServiceRunning(Context context, Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override

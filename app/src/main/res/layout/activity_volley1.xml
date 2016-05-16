@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btnVolleySendRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Simple Request" />
+
+    <Button
+        android:id="@+id/btnVolleyImgRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image Request" />
+
+    <Button
+        android:id="@+id/btnVolleyNetworkImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Network Image" />
+
+    <Button
+        android:id="@+id/btnVolleyRequestJson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RequestJson" />
+
+    <ImageView
+        android:id="@+id/imgvVolleydemo"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="#336611" />
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/imgvVolleynetworkImageView"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:background="#0099dd" />
+
+    <TextView
+        android:id="@+id/txtVolleyLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#c6c6c6"
+        android:padding="10dp"
+        android:text="Data Received : " />
+</LinearLayout>

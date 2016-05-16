@@ -1,0 +1,23 @@
+<rss version="0.92">
+    <channel>
+        <title>MyTitle</title>
+        <link>http://myurl.com</link>
+        <description>MyDescription</description>
+        <lastBuildDate>SomeDate</lastBuildDate>
+        <docs>http://someurl.com</docs>
+        <language>SomeLanguage</language>
+
+        <item>
+            <title>TitleOne</title>
+            <description>Some text...</description>
+            <link>http://linktoarticle.com</link>
+        </item>
+
+        <item>
+            <title>TitleTwo</title>
+            <description>Some other text...</description>
+            <link>http://linktoanotherarticle.com</link>
+        </item>
+
+    </channel>
+</rss>

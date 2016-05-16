@@ -16,17 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.bhumik.testproject.R;
+import com.bhumik.testproject.Utils;
 
 /**
  * Created by bhumik on 7/5/16.
  */
 public class DrawerActivity extends AppCompatActivity {
+    Toolbar mToolbar;
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-
     private ActionBarDrawerToggle mDrawerToggle;
-    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class DrawerActivity extends AppCompatActivity {
             mPlanetTitles[i]="Planet "+i;
         }
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Utils.setStatusBarTranslucentForDrawerLayout(DrawerActivity.this, mDrawerLayout);
+
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         // Set the adapter for the list view
@@ -102,13 +104,6 @@ public class DrawerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-            selectItem(position);
-        }
-    }
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         Fragment fragment = new HomeFragment();
@@ -130,10 +125,16 @@ public class DrawerActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
-
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
     }
 }

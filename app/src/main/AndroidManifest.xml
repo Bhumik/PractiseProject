@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".broadcast.BroadcastDemo" />
+        <activity android:name=".broadcastNservice.BroadcastDemo" />
+        <activity android:name=".broadcastNservice.BindServiceDemo" />
         <activity android:name=".drawer.DrawerActivity" />
         <activity android:name=".loader.LoaderContactDemo" />
         <activity android:name=".rxjava.RxJavaDemo" />
@@ -28,7 +31,16 @@
         <activity android:name=".notification.NotificationDemo" />
         <activity android:name=".notification.wenmingvs.NotificationWenmingvsDemo" />
         <activity android:name=".UtilActivity" />
-        <service android:name=".broadcast.BroadcastService"/>
+        <activity android:name=".intent.IntentDemo" />
+        <activity android:name=".intent.ObjectTranDemo" />
+        <activity android:name=".ui.ViewGroupDemoActivity" />
+
+        <activity android:name=".image.PhotoWallLruDemo" />
+        <activity android:name=".network.volley.VolleyDemo" />
+        <activity android:name=".xml.XmlParseDemo" />
+
+
+        <service android:name=".broadcastNservice.BroadcastService" />
     </application>
 
 </manifest>

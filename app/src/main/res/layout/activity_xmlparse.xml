@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btnxmlSaxAndroidXml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAX Parse - android.xml"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnxmlSaxOrgSaxXml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAX Parse - org.sax.xml"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnxmlPullparser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XmlPullparser"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnxmlDOMparser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XmlDOMparser"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/txtxmldata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c6c6c6"
+        android:padding="5dp"
+        android:text="parsed data" />
+
+</LinearLayout>

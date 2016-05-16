@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnnoti_normal_singLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_normal_singLine" />
+
+    <Button
+        android:id="@+id/btnnoti_normal_moreLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_normal_moreLine" />
+
+    <Button
+        android:id="@+id/btnnoti_mailbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_mailbox" />
+
+    <Button
+        android:id="@+id/btnnoti_bigPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_bigPic" />
+
+    <Button
+        android:id="@+id/btnnoti_customview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_customview" />
+
+    <Button
+        android:id="@+id/btnnoti_buttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_buttom" />
+
+    <Button
+        android:id="@+id/btnnoti_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_progress" />
+
+    <Button
+        android:id="@+id/btnnoti_headUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btnnoti_headUp" />
+
+</LinearLayout>

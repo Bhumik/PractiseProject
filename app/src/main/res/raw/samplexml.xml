@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Channel>
+    <Item id="0" url="http://www.google.com">google</Item>
+    <Item id="1" url="http://www.facebook.com">Facebook</Item>
+    <Item id="2" url="http://www.yahoo.com">Yahoo</Item>
+    <Item id="3" url="http://www.quora.com">Quora</Item>
+</Channel>

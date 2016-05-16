@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txtcvg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Custom View Group Demo Activity" />
+
+
+    <Button
+        android:id="@+id/btncvg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:text="Click View Log I draw process"></Button>
+
+    <com.bhumik.testproject.ui.MyViewGroup
+        android:id="@+id/cvg_custemViewGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>

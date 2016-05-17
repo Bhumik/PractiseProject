@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bhumik.testproject" >
+    package="com.bhumik.practiseproject" >
 
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
@@ -14,33 +14,39 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        <activity android:name="com.bhumik.practiseproject.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".broadcastNservice.BroadcastDemo" />
-        <activity android:name=".broadcastNservice.BindServiceDemo" />
-        <activity android:name=".drawer.DrawerActivity" />
-        <activity android:name=".loader.LoaderContactDemo" />
-        <activity android:name=".rxjava.RxJavaDemo" />
-        <activity android:name=".fab.FABDemo" />
-        <activity android:name=".image.ImageCropDemo" />
-        <activity android:name=".notification.NotificationDemo" />
-        <activity android:name=".notification.wenmingvs.NotificationWenmingvsDemo" />
-        <activity android:name=".UtilActivity" />
-        <activity android:name=".intent.IntentDemo" />
-        <activity android:name=".intent.ObjectTranDemo" />
-        <activity android:name=".ui.ViewGroupDemoActivity" />
+        <activity android:name="com.bhumik.practiseproject.broadcastNservice.BroadcastDemo" />
+        <activity android:name="com.bhumik.practiseproject.broadcastNservice.BindServiceDemo" />
+        <activity android:name="com.bhumik.practiseproject.drawer.DrawerActivity" />
+        <activity android:name="com.bhumik.practiseproject.loader.LoaderContactDemo" />
+        <activity android:name="com.bhumik.practiseproject.rxjava.RxJavaDemo" />
+        <activity android:name="com.bhumik.practiseproject.fab.FABDemo" />
+        <activity android:name="com.bhumik.practiseproject.image.ImageCropDemo" />
+        <activity android:name="com.bhumik.practiseproject.notification.NotificationDemo" />
+        <activity android:name="com.bhumik.practiseproject.notification.wenmingvs.NotificationWenmingvsDemo" />
+        <activity android:name="com.bhumik.practiseproject.UtilActivity" />
+        <activity android:name="com.bhumik.practiseproject.intent.IntentDemo" />
+        <activity android:name="com.bhumik.practiseproject.intent.ObjectTranDemo" />
+        <activity android:name="com.bhumik.practiseproject.ui.ViewGroupDemoActivity" />
 
-        <activity android:name=".image.PhotoWallLruDemo" />
-        <activity android:name=".network.volley.VolleyDemo" />
-        <activity android:name=".xml.XmlParseDemo" />
+        <activity android:name="com.bhumik.practiseproject.image.PhotoWallLruDemo" />
+        <activity android:name="com.bhumik.practiseproject.network.volley.VolleyDemo" />
+        <activity android:name="com.bhumik.practiseproject.xml.XmlParseDemo" />
 
+        <activity android:name="com.bhumik.practiseproject.ui.WhatsUpUI" />
+        <activity android:name="com.bhumik.practiseproject.views.RecyclerViewDemo" />
+        <activity android:name="com.bhumik.practiseproject.views.RecyclerViewDemo2" android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name="com.bhumik.practiseproject.views.universalList.UniversalListDemo" />
 
-        <service android:name=".broadcastNservice.BroadcastService" />
+        <activity android:name="com.bhumik.practiseproject.xtra.XtraDemo" />
+
+        <service android:name="com.bhumik.practiseproject.broadcastNservice.BroadcastService" />
     </application>
 
 </manifest>

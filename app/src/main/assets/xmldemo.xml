@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+    <ItemData>
+        <ItemNumber>ABC</ItemNumber>
+        <Description>ABC Item Description</Description>
+        <Price>9.95</Price>
+        <Weight>10.00</Weight>
+    </ItemData>
+    <ItemData>
+        <ItemNumber>XYZ</ItemNumber>
+        <Description>XYZ Item Description</Description>
+        <Price>19.95</Price>
+        <Weight>22.22</Weight>
+    </ItemData>
+</Items>

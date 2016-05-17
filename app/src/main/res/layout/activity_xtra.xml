@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:background="#c6c6c6">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AutoCompleteMailTextView Demo"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/xtraAuto"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="#a0aa8800"
+            android:layout_height="wrap_content" />
+
+<!--
+        <com.bhumik.testproject.xtra.items.AdvancedAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="#a0008800"
+            android:layout_height="wrap_content" />
+-->
+
+    </LinearLayout>
+
+</LinearLayout>

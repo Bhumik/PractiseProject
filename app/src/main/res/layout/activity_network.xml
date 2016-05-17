@@ -6,10 +6,11 @@
     android:padding="10dp">
 
     <Button
-        android:id="@+id/btnNetworkSendRequest"
+        android:id="@+id/btnNetwork1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Simple Request" />
+        android:textAllCaps="false"
+        android:text="HttpClient - getJson (deprecated)" />
 
 
     <TextView

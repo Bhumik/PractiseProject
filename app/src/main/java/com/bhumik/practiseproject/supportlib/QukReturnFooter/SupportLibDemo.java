@@ -11,16 +11,6 @@ import java.util.Arrays;
 
 public class SupportLibDemo extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supportlib);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(Arrays.asList(sCheeseStrings)));
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
     public static final String[] sCheeseStrings = {
             "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
             "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale",
@@ -62,5 +52,15 @@ public class SupportLibDemo extends AppCompatActivity {
             "Daralagjazsky", "Dauphin", "Delice des Fiouves", "Denhany Dorset Drum", "Derby",
             "Dessertnyj Belyj", "Devon Blue", "Devon Garland", "Dolcelatte", "Doolin"
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_supportlib);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(Arrays.asList(sCheeseStrings)));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
 }

@@ -22,6 +22,7 @@ public class ViewGroupDemoActivity extends AppCompatActivity {
 
     private SeekBar seekUIcpview;
     private CircularProgressView cUIcpview;
+
     /**
      * Called when the activity is first created.
      */
@@ -49,20 +50,24 @@ public class ViewGroupDemoActivity extends AppCompatActivity {
 
     private void initCircularView() {
 
-        seekUIcpview  = (SeekBar) findViewById(R.id.seekUIcpview);
-        cUIcpview  = (CircularProgressView) findViewById(R.id.cUIcpview);
+        seekUIcpview = (SeekBar) findViewById(R.id.seekUIcpview);
+        cUIcpview = (CircularProgressView) findViewById(R.id.cUIcpview);
 
         seekUIcpview.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                double Cprogress = (double) progress/(double) 100;
-                Log.d(TAG,"= seekavr - progress : "+Cprogress+" =");
+                double Cprogress = (double) progress / (double) 100;
+                Log.d(TAG, "= seekavr - progress : " + Cprogress + " =");
                 cUIcpview.setProgress(Cprogress);
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
     }

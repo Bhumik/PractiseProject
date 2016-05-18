@@ -9,7 +9,7 @@ import com.bhumik.practiseproject.R;
 /**
  * Created by bhumik on 4/5/16.
  */
-public class MapDemo extends AppCompatActivity{
+public class MapDemo extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

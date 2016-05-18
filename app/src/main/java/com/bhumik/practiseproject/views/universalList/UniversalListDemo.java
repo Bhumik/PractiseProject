@@ -26,29 +26,29 @@ public class UniversalListDemo extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_universal);
-        lstv = (ListView)findViewById(R.id.lstvViewsUniversal);
+        lstv = (ListView) findViewById(R.id.lstvViewsUniversal);
         mItems = generateRandomItems(50);
 
-        lstv.setAdapter(new CommonAdapter<Item>(UniversalListDemo.this,mItems,android.R.layout.simple_list_item_1) {
+        lstv.setAdapter(new CommonAdapter<Item>(UniversalListDemo.this, mItems, android.R.layout.simple_list_item_1) {
             @Override
             public void convert(UniversalViewHolder holder, Item item) {
-                holder.setText (android.R.id.text1, item.getItemDetails());
+                holder.setText(android.R.id.text1, item.getItemDetails());
             }
         });
 
-        lstv.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+        lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText (UniversalListDemo.this , "click on the first" + position + "an Item" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(UniversalListDemo.this, "click on the first" + position + "an Item", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
-    public ArrayList<Item> generateRandomItems(int n){
+    public ArrayList<Item> generateRandomItems(int n) {
         ArrayList<Item> temp = new ArrayList<Item>();
-        for(int i=0;i<n;i++){
-            temp.add(new Item(i,"item "+i));
+        for (int i = 0; i < n; i++) {
+            temp.add(new Item(i, "item " + i));
         }
         return temp;
     }

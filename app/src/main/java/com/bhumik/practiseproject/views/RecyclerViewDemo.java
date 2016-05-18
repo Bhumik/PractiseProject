@@ -1,10 +1,12 @@
 package com.bhumik.practiseproject.views;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +26,40 @@ public class RecyclerViewDemo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerdemo);
 
+
+        setupToolbar();
+        ;
+
         mRecyclerView = (RecyclerView) findViewById(R.id.rcvview_demo);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(new RecyclerViewAdapter(RecyclerViewDemo.this));
 
     }
 
+    public void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setLogo(R.drawable.drawer_icon);
+        toolbar.setLogoDescription("toolbar logo desc");
+        toolbar.setSubtitle("SubTitle");
+        toolbar.setSubtitleTextColor(Color.WHITE);
+        toolbar.setTitle("Title");
+        toolbar.setTitleTextColor(Color.CYAN);
+        toolbar.setNavigationIcon(R.drawable.wx_smallicon);
+        toolbar.setNavigationContentDescription("Nav content Desc");
+
+        toolbar.inflateMenu(R.menu.menu_toolbar);
+        setSupportActionBar(toolbar);
+
+    }
+
+    public ArrayList<Item> generateRandomItems(int n) {
+        ArrayList<Item> temp = new ArrayList<Item>();
+        for (int i = 0; i < n; i++) {
+            temp.add(new Item(i, "item " + i));
+        }
+        return temp;
+    }
 
     private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
         private final LayoutInflater mInflater;
@@ -57,27 +87,18 @@ public class RecyclerViewDemo extends AppCompatActivity {
 
         class mViewHolder extends RecyclerView.ViewHolder {
             private TextView text1;
+
             public mViewHolder(View itemView) {
                 super(itemView);
                 text1 = (TextView) itemView.findViewById(android.R.id.text1);
             }
 
             public void bind(int position) {
-                text1.setText("pos : "+position);
+                text1.setText("pos : " + position);
                 text1.setTag(position);
             }
         }
 
-    }
-
-
-
-    public ArrayList<Item> generateRandomItems(int n){
-        ArrayList<Item> temp = new ArrayList<Item>();
-        for(int i=0;i<n;i++){
-            temp.add(new Item(i,"item "+i));
-        }
-        return temp;
     }
 
 

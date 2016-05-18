@@ -3,6 +3,7 @@ package com.bhumik.practiseproject.supportlib.QukReturnFooter;
 /**
  * Created by bhumik on 12/5/16.
  */
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,24 +18,6 @@ public class SimpleStringRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
 
     private List<String> mValues;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public String mBoundString;
-
-        public final View mView;
-        public final TextView mTextView;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mTextView = (TextView) view.findViewById(android.R.id.text1);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mTextView.getText();
-        }
-    }
 
     public SimpleStringRecyclerViewAdapter(List<String> items) {
         mValues = items;
@@ -56,5 +39,22 @@ public class SimpleStringRecyclerViewAdapter
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public final View mView;
+        public final TextView mTextView;
+        public String mBoundString;
+
+        public ViewHolder(View view) {
+            super(view);
+            mView = view;
+            mTextView = (TextView) view.findViewById(android.R.id.text1);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + mTextView.getText();
+        }
     }
 }

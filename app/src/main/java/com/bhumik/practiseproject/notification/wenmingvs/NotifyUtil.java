@@ -219,7 +219,7 @@ public class NotifyUtil {
     }
 
     /**
-     *Notification information may accommodate multiple lines of text prompts ( as supported in the high version of the system , so you want to be judged )
+     * Notification information may accommodate multiple lines of text prompts ( as supported in the high version of the system , so you want to be judged )
      *
      * @param pendingIntent
      * @param smallIcon

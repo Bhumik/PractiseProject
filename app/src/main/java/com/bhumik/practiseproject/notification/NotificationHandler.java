@@ -35,7 +35,7 @@ public class NotificationHandler {
      *
      * @return
      */
-    public static NotificationHandler getInstance(Context context,Class aClass) {
+    public static NotificationHandler getInstance(Context context, Class aClass) {
         if (nHandler == null) {
             nHandler = new NotificationHandler();
             mNotificationManager =
@@ -258,12 +258,11 @@ public class NotificationHandler {
     }
 
 
-
     private Notification setNormalNotification(Context context) {
         Bitmap remote_picture = null;
 
         try {
-            remote_picture = BitmapFactory.decodeResource(context.getResources(),R.drawable.drawer_icon);
+            remote_picture = BitmapFactory.decodeResource(context.getResources(), R.drawable.drawer_icon);
 //            remote_picture = BitmapFactory.decodeStream((InputStream) new URL(sample_url).getContent());
         } catch (Exception e) {
             e.printStackTrace();
@@ -303,7 +302,7 @@ public class NotificationHandler {
         notiStyle.setSummaryText("Nice big text.");
 
         try {
-            remote_picture = BitmapFactory.decodeResource(context.getResources(),R.drawable.drawer_icon);
+            remote_picture = BitmapFactory.decodeResource(context.getResources(), R.drawable.drawer_icon);
 //            remote_picture = BitmapFactory.decodeStream((InputStream) new URL(sample_url).getContent());
         } catch (Exception e) {
             e.printStackTrace();
@@ -349,7 +348,7 @@ public class NotificationHandler {
         notiStyle.setSummaryText("Nice big picture.");
 
         try {
-            remote_picture = BitmapFactory.decodeResource(context.getResources(),R.drawable.drawer_icon);
+            remote_picture = BitmapFactory.decodeResource(context.getResources(), R.drawable.drawer_icon);
 //            remote_picture = BitmapFactory.decodeStream((InputStream) new URL(sample_url).getContent());
         } catch (Exception e) {
             e.printStackTrace();
@@ -393,13 +392,13 @@ public class NotificationHandler {
 
         // Add the multiple lines to the style.
         // This is strictly for providing an example of multiple lines.
-        for (int i=0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             notiStyle.addLine("(" + i + " of 6) Line one here.");
         }
         notiStyle.setSummaryText("+2 more Line Samples");
 
         try {
-            remote_picture = BitmapFactory.decodeResource(context.getResources(),R.drawable.drawer_icon);
+            remote_picture = BitmapFactory.decodeResource(context.getResources(), R.drawable.drawer_icon);
 //            remote_picture = BitmapFactory.decodeStream((InputStream) new URL(sample_url).getContent());
         } catch (Exception e) {
             e.printStackTrace();

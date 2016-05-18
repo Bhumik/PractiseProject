@@ -9,14 +9,16 @@ import com.bhumik.practiseproject.R;
 public class NotificationDemo extends AppCompatActivity implements View.OnClickListener {
 
     NotificationHandler nHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noti);
-        nHandler = NotificationHandler.getInstance(NotificationDemo.this,NotificationDemo.class);
+        nHandler = NotificationHandler.getInstance(NotificationDemo.this, NotificationDemo.class);
         initUI();
     }
-    private void initUI () {
+
+    private void initUI() {
         findViewById(R.id.btnnoti_simple_notification).setOnClickListener(this);
         findViewById(R.id.btnnoti_big_notification).setOnClickListener(this);
         findViewById(R.id.btnnoti_progress_notification).setOnClickListener(this);
@@ -32,7 +34,7 @@ public class NotificationDemo extends AppCompatActivity implements View.OnClickL
 
 
     @Override
-    public void onClick (View v) {
+    public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.btnnoti_simple_notification:
@@ -50,7 +52,6 @@ public class NotificationDemo extends AppCompatActivity implements View.OnClickL
             case R.id.btnnoti_button_notifcation:
                 nHandler.createButtonNotification(this);
                 break;
-
 
 
             case R.id.btnnoti_1:

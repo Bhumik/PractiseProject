@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
-
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +21,9 @@ import android.widget.Toast;
 
 import com.bhumik.practiseproject.R;
 
-public class LoaderContactDemo extends AppCompatActivity implements SearchView.OnQueryTextListener, LoaderManager.LoaderCallbacks<Cursor>  {
+public class LoaderContactDemo extends AppCompatActivity implements SearchView.OnQueryTextListener, LoaderManager.LoaderCallbacks<Cursor> {
 
-    static final String[] CONTACTS_SUMMARY_PROJECTION = new String[] {
+    static final String[] CONTACTS_SUMMARY_PROJECTION = new String[]{
             Contacts._ID,
             Contacts.DISPLAY_NAME,
             Contacts.CONTACT_STATUS,
@@ -43,8 +42,8 @@ public class LoaderContactDemo extends AppCompatActivity implements SearchView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loader_contact);
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(this,"Permission Not Available",Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Permission Not Available", Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -55,8 +54,8 @@ public class LoaderContactDemo extends AppCompatActivity implements SearchView.O
         // Create an empty adapter we will use to display the loaded data.
         mAdapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2, null,
-                new String[] { Contacts.DISPLAY_NAME, Contacts.CONTACT_STATUS },
-                new int[] { android.R.id.text1, android.R.id.text2 }, 0);
+                new String[]{Contacts.DISPLAY_NAME, Contacts.CONTACT_STATUS},
+                new int[]{android.R.id.text1, android.R.id.text2}, 0);
         lstv.setAdapter(mAdapter);
 
 

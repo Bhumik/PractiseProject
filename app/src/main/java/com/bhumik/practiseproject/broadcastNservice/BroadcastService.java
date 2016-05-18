@@ -22,7 +22,7 @@ public class BroadcastService extends Service {
             @Override
             public void run() {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss\n"+System.currentTimeMillis());
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss\n" + System.currentTimeMillis());
                 String currentDateandTime = sdf.format(new Date());
 
                 Intent intent = new Intent();

@@ -69,12 +69,14 @@ public class BroadcastDemo extends AppCompatActivity {
         btnToggleService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isBroadcastServiceRunning(BroadcastDemo.this,BroadcastService.class)){
-                    stopService(new Intent(BroadcastDemo.this,BroadcastService.class));
-                    btnToggleService.setText("START Service");;
-                }else{
-                    startService(new Intent(BroadcastDemo.this,BroadcastService.class));
-                    btnToggleService.setText("STOP Service");;
+                if (isBroadcastServiceRunning(BroadcastDemo.this, BroadcastService.class)) {
+                    stopService(new Intent(BroadcastDemo.this, BroadcastService.class));
+                    btnToggleService.setText("START Service");
+                    ;
+                } else {
+                    startService(new Intent(BroadcastDemo.this, BroadcastService.class));
+                    btnToggleService.setText("STOP Service");
+                    ;
                 }
 
             }
@@ -89,10 +91,12 @@ public class BroadcastDemo extends AppCompatActivity {
         intentFilter.addAction(SERVICE_ACTION_DATA_AVAILABLE);
         registerReceiver(broadcastReceiver, intentFilter);
 
-        if(isBroadcastServiceRunning(BroadcastDemo.this,BroadcastService.class)){
-            btnToggleService.setText("STOP Service");;
-        }else{
-            btnToggleService.setText("START Service");;
+        if (isBroadcastServiceRunning(BroadcastDemo.this, BroadcastService.class)) {
+            btnToggleService.setText("STOP Service");
+            ;
+        } else {
+            btnToggleService.setText("START Service");
+            ;
         }
     }
 
@@ -105,8 +109,8 @@ public class BroadcastDemo extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if(isBroadcastServiceRunning(BroadcastDemo.this,BroadcastService.class)){
-            stopService(new Intent(BroadcastDemo.this,BroadcastService.class));
+        if (isBroadcastServiceRunning(BroadcastDemo.this, BroadcastService.class)) {
+            stopService(new Intent(BroadcastDemo.this, BroadcastService.class));
         }
         super.onDestroy();
     }

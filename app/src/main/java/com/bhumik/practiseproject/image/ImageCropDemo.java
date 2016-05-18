@@ -22,9 +22,9 @@ import java.io.IOException;
 public class ImageCropDemo extends AppCompatActivity {
 
     private static final String TAG = "ImageCropDemo";
+    final int CHOOSE_BIG_PICTURE = 12;
     Button btnImgCrop;
     ImageView imgv_img;
-    final int CHOOSE_BIG_PICTURE = 12;
     //static final String IMAGE_FILE_LOCATION = "file:///sdcard/temp.jpg";//temp file
     //Uri imageUri = Uri.parse(IMAGE_FILE_LOCATION);//The Uri to store the big bitmap
 
@@ -129,12 +129,12 @@ MediaStore.EXTRA_OUTPUT ( "output")	-----  HATE	URI will point to the appropriat
             case CHOOSE_BIG_PICTURE:
                 if (resultCode == RESULT_OK) {
                     Log.d(TAG, "CHOOSE_BIG_PICTURE: data = " + data);//it seems to be null
-                    if(getTempUri() != null){
+                    if (getTempUri() != null) {
                         Bitmap bitmap = decodeUriAsBitmap(getTempUri());//decode bitmap
-                        if(bitmap !=null)
+                        if (bitmap != null)
                             imgv_img.setImageBitmap(bitmap);
                         else
-                            Toast.makeText(getApplicationContext(),"bitmap null",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "bitmap null", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;

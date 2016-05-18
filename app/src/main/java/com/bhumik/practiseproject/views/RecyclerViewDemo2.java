@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bhumik.practiseproject.R;
-import com.bhumik.practiseproject.views.bean.Item;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,19 +43,20 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
     }
 
 
-    private  void  initRecyclerView (RecyclerView recyclerView)  {
-        recyclerView.setHasFixedSize (true); // set a fixed size
-        initRecyclerLayoutManager (recyclerView); // initialize layout
-        initRecyclerAdapter (recyclerView); // initialize adapter
-        initItemDecoration (recyclerView); // initialize decorative
-        initItemAnimator (recyclerView); // initialize animation
+    private void initRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setHasFixedSize(true); // set a fixed size
+        initRecyclerLayoutManager(recyclerView); // initialize layout
+        initRecyclerAdapter(recyclerView); // initialize adapter
+        initItemDecoration(recyclerView); // initialize decorative
+        initItemAnimator(recyclerView); // initialize animation
     }
 
 
-    private void  initRecyclerLayoutManager (RecyclerView recyclerView)  {
+    private void initRecyclerLayoutManager(RecyclerView recyclerView) {
         // staggered grid layout
-        recyclerView.setLayoutManager ( new StaggeredGridLayoutManager ( 4 , StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
     }
+
     private void initRecyclerAdapter(RecyclerView recyclerView) {
         mAdapter = new MyAdapter(getData());
         recyclerView.setAdapter(mAdapter);
@@ -68,23 +67,23 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
     }
 
     /**
-            * Initialize RecyclerView (ItemAnimator) project Anime
-    *
-            * @param recyclerView master control
-    */
-    private void initItemAnimator (RecyclerView recyclerView) {
-        recyclerView.setItemAnimator (new DefaultItemAnimator()); // default animation
+     * Initialize RecyclerView (ItemAnimator) project Anime
+     *
+     * @param recyclerView master control
+     */
+    private void initItemAnimator(RecyclerView recyclerView) {
+        recyclerView.setItemAnimator(new DefaultItemAnimator()); // default animation
     }
 
     /**
-            * Analog data
-    *
-            * @return data
-    */
-    private ArrayList <DataModel>getData () {
+     * Analog data
+     *
+     * @return data
+     */
+    private ArrayList<DataModel> getData() {
         int COUNT = 57;
-        ArrayList <DataModel> data = new ArrayList <>();
-        for (int i = 0; i < COUNT; i ++) {
+        ArrayList<DataModel> data = new ArrayList<>();
+        for (int i = 0; i < COUNT; i++) {
             DataModel model = new DataModel();
 
             model.setDateTime(getBeforeDay(new Date(), i));
@@ -97,16 +96,17 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
     }
 
     /**
-            * Get the date before the day
-    * @param date Date
-    * @param i deviate
-    * @return new date
-    */
-    private Date getBeforeDay (Date date, int i) {
-        Calendar calendar = Calendar.getInstance ();
+     * Get the date before the day
+     *
+     * @param date Date
+     * @param i    deviate
+     * @return new date
+     */
+    private Date getBeforeDay(Date date, int i) {
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DAY_OF_YEAR, i * (-1));
-        return calendar.getTime ();
+        return calendar.getTime();
     }
 
 
@@ -116,6 +116,7 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_recycleview, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -140,7 +141,7 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
 
     public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
@@ -167,14 +168,14 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
             DataModel dataModel = mDataModels.get(position);
 
             // Random height to simulate waterfalls.
-            if (mHeights.size () <= position) {
-                mHeights.add (( int ) ( 100 + Math.random () * 300 ));
+            if (mHeights.size() <= position) {
+                mHeights.add((int) (100 + Math.random() * 300));
             }
 
             ViewGroup.LayoutParams lp = holder.getTvLabel().getLayoutParams();
             lp.height = mHeights.get(position);
 
-            holder.getTvLabel (). setLayoutParams (lp);
+            holder.getTvLabel().setLayoutParams(lp);
 
             holder.getTvLabel().setText(dataModel.getLabel());
             holder.getTvDateTime().setText(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
@@ -201,21 +202,19 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
         }
 
         /**
-                * Get  date before  day
-        *
-                * @param date Date
-        * @param i deviate
-        * @return new date
-        */
-        private  Date getBeforeDay (Date date, int i)  {
-            Calendar calendar = Calendar.getInstance ();
-            calendar.setTime (date);
-            calendar.add (Calendar.DAY_OF_YEAR, i * (- 1 ));
-            return calendar.getTime ();
+         * Get  date before  day
+         *
+         * @param date Date
+         * @param i    deviate
+         * @return new date
+         */
+        private Date getBeforeDay(Date date, int i) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_YEAR, i * (-1));
+            return calendar.getTime();
         }
     }
-
-
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -284,8 +283,8 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
             final int childCount = parent.getChildCount();
 
             // In  bottom of each sub-control objects
-            for ( int i = 0 ; i <childCount; i ++) {
-                final  View child = parent.getChildAt (i);
+            for (int i = 0; i < childCount; i++) {
+                final View child = parent.getChildAt(i);
 
                 final int left = child.getLeft() + child.getPaddingLeft();
                 final int right = child.getWidth() + child.getLeft() - child.getPaddingRight();
@@ -297,17 +296,17 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
         }
 
         // Vertical line
-        public  void  drawVertical ( Canvas c, RecyclerView parent)  {
+        public void drawVertical(Canvas c, RecyclerView parent) {
 
             final int childCount = parent.getChildCount();
 
             // In each sub-control right to draw lines
-            for ( int i = 0 ; i <childCount; i ++) {
-                final  View child = parent.getChildAt (i);
-                int right = child.getRight () - child.getPaddingRight ( );
-                int left = right - mDivider.getIntrinsicWidth ();
-                final  int top = child.getTop () + child.getPaddingTop ();
-                final  int bottom = child.getTop () + child.getHeight () - child.getPaddingBottom () ;
+            for (int i = 0; i < childCount; i++) {
+                final View child = parent.getChildAt(i);
+                int right = child.getRight() - child.getPaddingRight();
+                int left = right - mDivider.getIntrinsicWidth();
+                final int top = child.getTop() + child.getPaddingTop();
+                final int bottom = child.getTop() + child.getHeight() - child.getPaddingBottom();
 
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);

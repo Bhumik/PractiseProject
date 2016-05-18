@@ -21,7 +21,8 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
         setContentView(R.layout.activity_noti_wenmingvs);
         initUI();
     }
-    private void initUI () {
+
+    private void initUI() {
         findViewById(R.id.btnnoti_normal_singLine).setOnClickListener(this);
         findViewById(R.id.btnnoti_normal_moreLine).setOnClickListener(this);
         findViewById(R.id.btnnoti_mailbox).setOnClickListener(this);
@@ -35,7 +36,7 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
 
 
     @Override
-    public void onClick (View v) {
+    public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.btnnoti_normal_singLine:
@@ -90,6 +91,7 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
         notify1.notify_normal_singline(pIntent, smallIcon, ticker, title, content, true, true, false);
 //        currentNotify = notify1;
     }
+
     private void notify_normal_moreLine(Context mContext) {
         //Setting data content want to show
         int requestCode = 112;
@@ -104,7 +106,7 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
         String content = " According to Taiwan's  Central News Agency report, KMT Chairman Chu report today (April 18 ) to the Central Standing Committee , the party chairman to resign defeat , he thanks the Standing Committee teach tolerance, also announced by the Deputy future party work The Chairman Huang Ming so acting , all completed in the next election work . ";
         NotifyUtil notify2 = new NotifyUtil(mContext, 2);
         notify2.notify_normail_moreline(pIntent, smallIcon, ticker, title, content, true, true, false);
-       // currentNotify = notify2;
+        // currentNotify = notify2;
     }
 
     /**
@@ -154,7 +156,7 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
         int smallIcon = R.drawable.drawer_icon;
         int largePic = R.drawable.drawer_icon;
 //        int smallIcon = R.drawable.xc_smaillicon;
-  //      int largePic = R.drawable.screenshot;
+        //      int largePic = R.drawable.screenshot;
         String ticker = "You have a new notifications";
         String title = " has crawled screenshot ";
         String content = " Touch to view your screenshot .";
@@ -252,7 +254,7 @@ public class NotificationWenmingvsDemo extends AppCompatActivity implements View
         //Examples of tools, and call interface
         NotifyUtil notify7 = new NotifyUtil(mContext, 7);
         notify7.notify_progress(rightPendIntent, smallIcon, ticker, "Android 6.0.1 download", "Downloading", true, false, false);
-       // currentNotify = notify7;
+        // currentNotify = notify7;
     }
 
     /**

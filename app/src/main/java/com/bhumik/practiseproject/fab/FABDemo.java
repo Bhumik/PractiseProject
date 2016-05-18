@@ -22,7 +22,7 @@ public class FABDemo extends AppCompatActivity {
         setContentView(R.layout.activity_fabdemo);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycleview_fab);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(new RecyclerViewAdapter(FABDemo.this));
 
     }
@@ -54,13 +54,14 @@ public class FABDemo extends AppCompatActivity {
 
         class mViewHolder extends RecyclerView.ViewHolder {
             private TextView text1;
+
             public mViewHolder(View itemView) {
                 super(itemView);
                 text1 = (TextView) itemView.findViewById(android.R.id.text1);
             }
 
             public void bind(int position) {
-                text1.setText("pos : "+position);
+                text1.setText("pos : " + position);
                 text1.setTag(position);
             }
         }

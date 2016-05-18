@@ -3,6 +3,7 @@ package com.bhumik.practiseproject.drawer;
 /**
  * Created by bhumik on 7/5/16.
  */
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +14,8 @@ import com.bhumik.practiseproject.R;
 
 public class HomeFragment extends Fragment {
 
-    public HomeFragment(){}
+    public HomeFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

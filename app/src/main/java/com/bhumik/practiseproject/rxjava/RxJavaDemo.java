@@ -15,6 +15,22 @@ public class RxJavaDemo extends AppCompatActivity {
 
     Button btnrxhw;
     TextView txtrxlog;
+    Subscriber<String> mySubscriber = new Subscriber<String>() {
+        @Override
+        public void onCompleted() {
+            txtrxlog.append("\nrxHelloWorld - onCompleted - ");
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            txtrxlog.append("\nrxHelloWorld - onError - ");
+        }
+
+        @Override
+        public void onNext(String o) {
+            txtrxlog.append("\nrxHelloWorld - onNext(" + o + ")");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +44,9 @@ public class RxJavaDemo extends AppCompatActivity {
         btnrxhw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 rxHelloWorld();
-                
+
             }
         });
     }
@@ -48,19 +64,4 @@ public class RxJavaDemo extends AppCompatActivity {
 
         myObservable.subscribe(mySubscriber);
     }
-
-    Subscriber<String> mySubscriber = new Subscriber<String>() {
-        @Override
-        public void onCompleted() {
-            txtrxlog.append("\nrxHelloWorld - onCompleted - ");
-        }
-        @Override
-        public void onError(Throwable e) {
-            txtrxlog.append("\nrxHelloWorld - onError - ");
-        }
-        @Override
-        public void onNext(String o) {
-            txtrxlog.append("\nrxHelloWorld - onNext("+o+")");
-        }
-    };
 }

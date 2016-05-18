@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bhumik.practiseproject.broadcastNservice.BindServiceDemo;
 import com.bhumik.practiseproject.broadcastNservice.BroadcastDemo;
+import com.bhumik.practiseproject.databind.DataBindDemo;
 import com.bhumik.practiseproject.drawer.DrawerActivity;
 import com.bhumik.practiseproject.fab.FABDemo;
 import com.bhumik.practiseproject.image.ImageCropDemo;
@@ -34,6 +35,7 @@ import com.bhumik.practiseproject.notification.wenmingvs.NotificationWenmingvsDe
 import com.bhumik.practiseproject.rxjava.RxJavaDemo;
 import com.bhumik.practiseproject.ui.ViewGroupDemoActivity;
 import com.bhumik.practiseproject.ui.WhatsUpUI;
+import com.bhumik.practiseproject.utils.Utils;
 import com.bhumik.practiseproject.views.RecyclerViewDemo;
 import com.bhumik.practiseproject.views.RecyclerViewDemo2;
 import com.bhumik.practiseproject.views.universalList.UniversalListDemo;
@@ -46,6 +48,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         CustomAdapter arrayAdapter = new CustomAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1);
         lstv.setAdapter(arrayAdapter);
 
-        arrayAdapter.addItem(BroadcastDemo.class, "Broadcast Send Receive Sample");
         arrayAdapter.addItem(BroadcastDemo.class, "Broadcast Send Receive Sample");
         arrayAdapter.addItem(BindServiceDemo.class, "BindServiceDemo");
         arrayAdapter.addItem(DrawerActivity.class, "DrawerActivity ");
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.addItem(RecyclerViewDemo.class, "RecyclerViewDemo");
         arrayAdapter.addItem(RecyclerViewDemo2.class, "RecyclerViewDemo 2 waterfall");
         arrayAdapter.addItem(UniversalListDemo.class, "Listview with Custom Universal Adapter");
+        arrayAdapter.addItem(DataBindDemo.class, "DataBind Demo");
         arrayAdapter.addItem(XtraDemo.class, "== XtraDemo ==");
 
         arrayAdapter.notifyDataSetChanged();
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     private void askPermission() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Toast.makeText(this,"askPermission",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "askPermission", Toast.LENGTH_SHORT).show();
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             }
@@ -127,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-        }else{
-            Toast.makeText(this,"askPermission - build version < M",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "askPermission - build version < M", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -141,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this,"Permission Granted"+requestCode,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permission Granted" + requestCode, Toast.LENGTH_SHORT).show();
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
 
                 } else {
-                    Toast.makeText(this,"Permission denied"+requestCode,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permission denied" + requestCode, Toast.LENGTH_SHORT).show();
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }

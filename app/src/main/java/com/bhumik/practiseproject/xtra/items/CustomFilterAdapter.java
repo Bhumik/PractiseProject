@@ -18,6 +18,54 @@ public class CustomFilterAdapter extends ArrayAdapter<String> {
     private ArrayList<String> items;
     private ArrayList<String> itemsAll;
     private ArrayList<String> suggestions;
+    Filter nameFilter = new Filter() {
+        public String convertResultToString(Object resultValue) {
+            String str = (String) resultValue;
+            return str;
+        }
+
+        @Override
+        protected Filter.FilterResults performFiltering(CharSequence constraint) {
+            if (constraint != null) {
+                String palabra = constraint.toString();
+                if (palabra != null && palabra.indexOf("@") != -1) {
+                    String palabra2 = palabra.substring(palabra.indexOf("@"));
+                    String antesArroba;
+                    try {
+                        antesArroba = palabra.substring(0, palabra.indexOf("@"));
+                    } catch (Exception ex) {
+                        antesArroba = "";
+                    }
+                    suggestions.clear();
+                    for (String customer : itemsAll) {
+                        if (customer.toLowerCase().startsWith(palabra2.toString().toLowerCase())) {
+                            suggestions.add(antesArroba + customer);
+                        }
+                    }
+                    FilterResults filterResults = new FilterResults();
+                    filterResults.values = suggestions;
+                    filterResults.count = suggestions.size();
+                    return filterResults;
+                } else {
+                    return new FilterResults();
+                }
+            } else {
+                return new FilterResults();
+            }
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            ArrayList<String> filteredList = (ArrayList<String>) results.values;
+            if (results != null && results.count > 0) {
+                clear();
+                for (String c : filteredList) {
+                    add(c);
+                }
+                notifyDataSetChanged();
+            }
+        }
+    };
     private int viewResourceId;
 
     public CustomFilterAdapter(Context context, int viewResourceId, ArrayList<String> items) {
@@ -36,7 +84,7 @@ public class CustomFilterAdapter extends ArrayAdapter<String> {
         }
         String customer = items.get(position);
         if (customer != null) {
-            TextView customerNameLabel = (TextView)v;
+            TextView customerNameLabel = (TextView) v;
             if (customerNameLabel != null) {
                 customerNameLabel.setText(customer);
             }
@@ -48,54 +96,5 @@ public class CustomFilterAdapter extends ArrayAdapter<String> {
     public Filter getFilter() {
         return nameFilter;
     }
-
-    Filter nameFilter = new Filter() {
-        public String convertResultToString(Object resultValue) {
-            String str = (String)resultValue;
-            return str;
-        }
-        @Override
-        protected Filter.FilterResults performFiltering(CharSequence constraint) {
-            if (constraint != null){
-                String palabra = constraint.toString();
-                if(palabra != null && palabra.indexOf("@") != -1) {
-                    String palabra2 = palabra.substring(palabra.indexOf("@"));
-                    String antesArroba;
-                    try{
-                        antesArroba = palabra.substring(0, palabra.indexOf("@"));
-                    }catch (Exception ex)
-                    {
-                        antesArroba ="";
-                    }
-                    suggestions.clear();
-                    for (String customer : itemsAll) {
-                        if(customer.toLowerCase().startsWith(palabra2.toString().toLowerCase())){
-                            suggestions.add(antesArroba+customer);
-                        }
-                    }
-                    FilterResults filterResults = new FilterResults();
-                    filterResults.values = suggestions;
-                    filterResults.count = suggestions.size();
-                    return filterResults;
-                } else {
-                    return new FilterResults();
-                }
-            }else {
-                return new FilterResults();
-            }
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            ArrayList<String> filteredList = (ArrayList<String>) results.values;
-            if(results != null && results.count > 0) {
-                clear();
-                for (String c : filteredList) {
-                    add(c);
-                }
-                notifyDataSetChanged();
-            }
-        }
-    };
 
 }

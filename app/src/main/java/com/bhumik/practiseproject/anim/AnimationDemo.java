@@ -22,7 +22,7 @@ import com.bhumik.practiseproject.R;
 
 public class AnimationDemo extends AppCompatActivity {
 
-    Button btnAnimAllXml, btnAnimAllCode,btnAnimClass,btnTvcloseAnimClass,btnCustomAnimClass;
+    Button btnAnimAllXml, btnAnimAllCode, btnAnimClass, btnTvcloseAnimClass, btnCustomAnimClass;
     ImageView imgv_anim;
 
     @Override
@@ -34,7 +34,7 @@ public class AnimationDemo extends AppCompatActivity {
         btnAnimAllXml = (Button) findViewById(R.id.btnAnimAllXml);
         btnAnimAllCode = (Button) findViewById(R.id.btnAnimAllCode);
         btnAnimClass = (Button) findViewById(R.id.btnAnimClass);
-        btnTvcloseAnimClass  = (Button) findViewById(R.id.btnTvcloseAnimClass);
+        btnTvcloseAnimClass = (Button) findViewById(R.id.btnTvcloseAnimClass);
         btnCustomAnimClass = (Button) findViewById(R.id.btnCustomAnimClass);
 
         btnAnimAllXml.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +56,8 @@ public class AnimationDemo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Animationclass animationclass = new Animationclass();
-                animationclass.setDuration ( 800 ); // the 800ms duration, the higher the frequency the shorter the duration
-                animationclass.setRepeatCount ( 2 ); // number of repetitions does not include the first
+                animationclass.setDuration(800); // the 800ms duration, the higher the frequency the shorter the duration
+                animationclass.setRepeatCount(2); // number of repetitions does not include the first
                 imgv_anim.startAnimation(animationclass);
             }
         });
@@ -144,82 +144,84 @@ public class AnimationDemo extends AppCompatActivity {
     }
 
 
-    public class Animationclass extends  Animation  {
+    public class Animationclass extends Animation {
         @Override
-        protected void applyTransformation (float interpolatedTime, Transformation t) {
-            t.getMatrix (). setTranslate (
-                    (float)Math.sin (interpolatedTime * 50 ) * 8 ,
-                    (float)Math.sin (interpolatedTime * 50 ) * 8
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            t.getMatrix().setTranslate(
+                    (float) Math.sin(interpolatedTime * 50) * 8,
+                    (float) Math.sin(interpolatedTime * 50) * 8
             ); // 50 the greater the higher the frequency, the smaller amplitudes smaller 8
-            super.applyTransformation (interpolatedTime, t);
+            super.applyTransformation(interpolatedTime, t);
         }
     }
-    public class  TVCloseAni extends  Animation  {
 
-        private  int mCenterWidth, mCenterHeight;
+    public class TVCloseAni extends Animation {
+
+        private int mCenterWidth, mCenterHeight;
 
         @Override
-        public  void  initialize ( int width, int height, int parentWidth, int parentHeight)  {
-            super.initialize (width, height, parentWidth, parentHeight);
+        public void initialize(int width, int height, int parentWidth, int parentHeight) {
+            super.initialize(width, height, parentWidth, parentHeight);
             // set the default length
-            setDuration ( 4000 );
+            setDuration(4000);
             // held state animation
-            setFillAfter (true);
+            setFillAfter(true);
             // set the default interpolator
             // setInterpolator (new BounceInterpolator ()) ; // rebound effect interpolator
-            mCenterWidth = width / 2 ;
-            height = mCenterHeight / 2 ;
+            mCenterWidth = width / 2;
+            height = mCenterHeight / 2;
         }
 
         @Override
-        protected  void  applyTransformation (float interpolatedTime, Transformation t)  {
-            super.applyTransformation (interpolatedTime, t);
-            Matrix matrix = t.getMatrix ();
-            matrix.preScale ( 1 ,
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            super.applyTransformation(interpolatedTime, t);
+            Matrix matrix = t.getMatrix();
+            matrix.preScale(1,
                     1 - interpolatedTime,
                     mCenterWidth,
                     mCenterHeight);
         }
     }
-    public class  CustomAni extends  Animation  {
 
-        private  int mCenterWidth, mCenterHeight;
-        private Camera mCamera = new Camera ();
-        private  float mRotateY = 0.0f ;
+    public class CustomAni extends Animation {
+
+        private int mCenterWidth, mCenterHeight;
+        private Camera mCamera = new Camera();
+        private float mRotateY = 0.0f;
 
         @Override
         public void initialize(int width, int height, int parentWidth, int parentHeight) {
             super.initialize(width, height, parentWidth, parentHeight);
 
-            setDuration ( 4000 );
+            setDuration(4000);
             // held state animation
-            setFillAfter (true);
+            setFillAfter(true);
             // set the default interpolator
-            setInterpolator (new BounceInterpolator()); // rebound effect interpolator
-            mCenterWidth = width / 2 ;
-            mCenterHeight = height / 2 ;
+            setInterpolator(new BounceInterpolator()); // rebound effect interpolator
+            mCenterWidth = width / 2;
+            mCenterHeight = height / 2;
 
         }
 
         // Set the rotation angle of exposure to the interface
-        public  void  setRotateY (float rotateY)  {
+        public void setRotateY(float rotateY) {
             mRotateY = rotateY;
         }
 
         // From the core definition of animation, during the execution of the animation will continue to callback to this method, and each callback interpolatedTime values ​​are constantly changing (0 ---- 1)
         @Override
-        protected  void  applyTransformation (float interpolatedTime, Transformation t)  {
-            super .applyTransformation (interpolatedTime, t);
-            Matrix matrix = t.getMatrix ();
-            mCamera.save ();
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            super.applyTransformation(interpolatedTime, t);
+            Matrix matrix = t.getMatrix();
+            mCamera.save();
             // Use Camera settings Y axis rotation angle
-            mCamera.rotateY (mRotateY * interpolatedTime);
+            mCamera.rotateY(mRotateY * interpolatedTime);
             // Change the rotation applied to the matrix
-            mCamera.getMatrix (matrix);
-            mCamera.restore ();
+            mCamera.getMatrix(matrix);
+            mCamera.restore();
             // Set the offset matrix effect before by pre way to change the center of rotation
-            matrix.preTranslate (mCenterWidth, mCenterHeight); // the rotation before the start of the displacement animation
-            matrix.postTranslate (-mCenterWidth, -mCenterHeight); // after the rotation start displacement animation
+            matrix.preTranslate(mCenterWidth, mCenterHeight); // the rotation before the start of the displacement animation
+            matrix.postTranslate(-mCenterWidth, -mCenterHeight); // after the rotation start displacement animation
         }
     }
 }

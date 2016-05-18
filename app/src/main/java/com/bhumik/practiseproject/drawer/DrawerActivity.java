@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.bhumik.practiseproject.R;
-import com.bhumik.practiseproject.Utils;
+import com.bhumik.practiseproject.utils.Utils;
 
 /**
  * Created by bhumik on 7/5/16.
@@ -40,10 +40,9 @@ public class DrawerActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
 
-
         mPlanetTitles = new String[10];
-        for(int i=0;i<10;i++){
-            mPlanetTitles[i]="Planet "+i;
+        for (int i = 0; i < 10; i++) {
+            mPlanetTitles[i] = "Planet " + i;
         }
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         Utils.setStatusBarTranslucentForDrawerLayout(DrawerActivity.this, mDrawerLayout);
@@ -57,8 +56,8 @@ public class DrawerActivity extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,mToolbar,
-                 R.string.app_name, R.string.app_name) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                R.string.app_name, R.string.app_name) {
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {

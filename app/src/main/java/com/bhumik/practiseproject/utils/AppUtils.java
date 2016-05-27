@@ -1,5 +1,6 @@
 package com.bhumik.practiseproject.utils;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +24,8 @@ import java.util.regex.Pattern;
  * Created by bhumik on 18/5/16.
  */
 public class AppUtils {
+
+    private static String TAG = "AppUtils";
 
     //APK Utils
     public static boolean isValidAppPackageName(String pkg) {
@@ -144,6 +153,52 @@ public class AppUtils {
         }
 
         return result;
+    }
+
+
+
+
+    /**
+     * Under Backup data / app directory for the Program apk installation files to the SD card root directory
+     * @param packageName
+     * @param mActivity
+     * @throws IOException
+     */
+    public static void backupApp(String packageName, Activity mActivity) throws IOException {
+        // Storage location
+        String newFile = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
+        String oldFile = null;
+        try {
+            // Original location
+            oldFile = mActivity.getPackageManager().getApplicationInfo(packageName, 0).sourceDir;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(newFile);
+        System.out.println(oldFile);
+
+        File in = new File(oldFile);
+        File out = new File(newFile + packageName + ".apk");
+        if (!out.exists()) {
+            out.createNewFile();
+            Log.i(TAG, "文件备份成功！" + "存放于" + newFile + "目录下");
+        } else {
+            Log.i(TAG, "文件备份成功！" + "存放于" + newFile + "目录下");
+        }
+
+        FileInputStream fis = new FileInputStream(in);
+        FileOutputStream fos = new FileOutputStream(out);
+
+        int count;
+        // File is too large , I feel the need to modify the
+        byte[] buffer = new byte[256 * 1024];
+        while ((count = fis.read(buffer)) > 0) {
+            fos.write(buffer, 0, count);
+        }
+
+        fis.close();
+        fos.flush();
+        fos.close();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.views;
+package com.bhumik.practiseproject.listviews;
 
 import android.content.Context;
 import android.content.res.TypedArray;

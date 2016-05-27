@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.views.universalList;
+package com.bhumik.practiseproject.listviews.universalList;
 
 import android.content.Context;
 import android.graphics.Bitmap;

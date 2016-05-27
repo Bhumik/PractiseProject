@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <Button
+        android:id="@+id/btn_handler_sendmsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SendMessage - ShowImage" />
+
+
+    <Button
+        android:id="@+id/btn_handler_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message.Obtain + sendMessage " />
+
+    <Button
+        android:id="@+id/btn_handler_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message.sendToTarget " />
+
+    <Button
+        android:id="@+id/btn_handler_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sendEmptyMessage(3); " />
+
+    <Button
+        android:id="@+id/btn_handler_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sendMessageDelayed(msg,3000); " />
+
+    <ImageView
+        android:id="@+id/imgv_handler_preview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c6c66c"
+        android:minHeight="100dp" />
+</LinearLayout>

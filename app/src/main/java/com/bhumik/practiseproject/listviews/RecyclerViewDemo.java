@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.views;
+package com.bhumik.practiseproject.listviews;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bhumik.practiseproject.R;
-import com.bhumik.practiseproject.views.bean.Item;
+import com.bhumik.practiseproject.listviews.bean.Item;
 
 import java.util.ArrayList;
 
@@ -28,12 +28,23 @@ public class RecyclerViewDemo extends AppCompatActivity {
 
 
         setupToolbar();
-        ;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rcvview_demo);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(new RecyclerViewAdapter(RecyclerViewDemo.this));
 
+
+        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     public void setupToolbar() {
@@ -53,7 +64,7 @@ public class RecyclerViewDemo extends AppCompatActivity {
 
     }
 
-    public ArrayList<Item> generateRandomItems(int n) {
+    public static ArrayList<Item> generateRandomItems(int n) {
         ArrayList<Item> temp = new ArrayList<Item>();
         for (int i = 0; i < n; i++) {
             temp.add(new Item(i, "item " + i));
@@ -63,7 +74,6 @@ public class RecyclerViewDemo extends AppCompatActivity {
 
     private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.mViewHolder> {
         private final LayoutInflater mInflater;
-
         public RecyclerViewAdapter(Context context) {
             mInflater = LayoutInflater.from(context);
         }
@@ -83,6 +93,48 @@ public class RecyclerViewDemo extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return 50;
+        }
+
+        class mViewHolder extends RecyclerView.ViewHolder {
+            private TextView text1;
+
+            public mViewHolder(View itemView) {
+                super(itemView);
+                text1 = (TextView) itemView.findViewById(android.R.id.text1);
+            }
+
+            public void bind(int position) {
+                text1.setText("pos : " + position);
+                text1.setTag(position);
+            }
+        }
+
+    }
+
+    private class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.mViewHolder> {
+        private final LayoutInflater mInflater;
+        private ArrayList<Item> itemArrayList=null;
+        public RecyclerViewAdapter2(Context context) {
+            mInflater = LayoutInflater.from(context);
+            itemArrayList = new ArrayList<Item>();
+            itemArrayList.addAll(generateRandomItems(20));
+        }
+
+        @Override
+        public mViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+
+            View view = mInflater.inflate(android.R.layout.simple_list_item_1, viewGroup, false);
+            return new mViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(mViewHolder holder, int position) {
+            holder.bind(position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return itemArrayList.size();
         }
 
         class mViewHolder extends RecyclerView.ViewHolder {

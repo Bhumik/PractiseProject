@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.views.universalList;
+package com.bhumik.practiseproject.listviews.universalList;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.bhumik.practiseproject.R;
-import com.bhumik.practiseproject.views.bean.Item;
+import com.bhumik.practiseproject.listviews.bean.Item;
 
 import java.util.ArrayList;
 import java.util.List;

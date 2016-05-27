@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.views.bean;
+package com.bhumik.practiseproject.listviews.bean;
 
 /**
  * Created by bhumik on 17/5/16.

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Practise Project</string>
+    <string name="span_text">Hello this is Android Spannable demo</string>
 </resources>

@@ -23,30 +23,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.bhumik.practiseproject.anim.AnimationDemo" />
         <activity android:name="com.bhumik.practiseproject.broadcastNservice.BroadcastDemo" />
         <activity android:name="com.bhumik.practiseproject.broadcastNservice.BindServiceDemo" />
         <activity android:name="com.bhumik.practiseproject.drawer.DrawerActivity" />
         <activity android:name="com.bhumik.practiseproject.loader.LoaderContactDemo" />
         <activity android:name="com.bhumik.practiseproject.rxjava.RxJavaDemo" />
         <activity android:name="com.bhumik.practiseproject.fab.FABDemo" />
-        <activity android:name="com.bhumik.practiseproject.image.ImageCropDemo" />
-        <activity android:name="com.bhumik.practiseproject.notification.NotificationDemo" />
-        <activity android:name="com.bhumik.practiseproject.notification.wenmingvs.NotificationWenmingvsDemo" />
-        <activity android:name="com.bhumik.practiseproject.UtilActivity" />
+        <activity android:name=".image.ImageOps" />
         <activity android:name="com.bhumik.practiseproject.intent.IntentDemo" />
         <activity android:name="com.bhumik.practiseproject.intent.ObjectTranDemo" />
-        <activity android:name="com.bhumik.practiseproject.ui.ViewGroupDemoActivity" />
 
         <activity android:name="com.bhumik.practiseproject.image.PhotoWallLruDemo" />
+
+        <activity android:name="com.bhumik.practiseproject.listviews.RecyclerViewDemo" />
+        <activity android:name="com.bhumik.practiseproject.listviews.RecyclerViewDemo2" android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name="com.bhumik.practiseproject.listviews.universalList.UniversalListDemo" />
+
         <activity android:name="com.bhumik.practiseproject.network.volley.VolleyDemo" />
-        <activity android:name="com.bhumik.practiseproject.xml.XmlParseDemo" />
-
+        <activity android:name="com.bhumik.practiseproject.notification.NotificationDemo" />
+        <activity android:name="com.bhumik.practiseproject.notification.wenmingvs.NotificationWenmingvsDemo" />
+        <activity android:name="com.bhumik.practiseproject.misc.HandlersDemo" />
+        <activity android:name="com.bhumik.practiseproject.styling.SpannableDemo" />
         <activity android:name="com.bhumik.practiseproject.ui.WhatsUpUI" />
-        <activity android:name="com.bhumik.practiseproject.views.RecyclerViewDemo" />
-        <activity android:name="com.bhumik.practiseproject.views.RecyclerViewDemo2" android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity android:name="com.bhumik.practiseproject.views.universalList.UniversalListDemo" />
-
+        <activity android:name="com.bhumik.practiseproject.xml.XmlParseDemo" />
         <activity android:name="com.bhumik.practiseproject.xtra.XtraDemo" />
+        <activity android:name="com.bhumik.practiseproject.UtilActivity" />
+
+        <activity android:name="com.bhumik.practiseproject.ui.CanvasDemoActivity" />
 
         <service android:name="com.bhumik.practiseproject.broadcastNservice.BroadcastService" />
     </application>

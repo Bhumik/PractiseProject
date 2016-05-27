@@ -7,10 +7,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Environment;
+import android.os.StatFs;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
+
+import java.io.File;
 
 /**
  * Created by bhumik on 18/5/16.
@@ -182,4 +186,60 @@ public class DeviceUtils {
             return true;
         }
     }
+
+
+    public static boolean sdCardIsAvailable() {
+        String status = Environment.getExternalStorageState();
+        if (!status.equals(Environment.MEDIA_MOUNTED)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check whether there is enough space sdcard
+     *
+     * @return true if There is otherwise no
+     */
+    public static boolean enoughSpaceOnSdCard(long updateSize) {
+        String status = Environment.getExternalStorageState();
+        if (!status.equals(Environment.MEDIA_MOUNTED)) {
+            return false;
+        }
+        return (updateSize < getRealSizeOnSdcard());
+    }
+
+    /**
+     * Get sdcard available space
+     */
+    public static long getRealSizeOnSdcard() {
+        File path = new File(Environment.getExternalStorageDirectory()
+                .getAbsolutePath());
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long availableBlocks = stat.getAvailableBlocks();
+        return availableBlocks * blockSize;
+    }
+
+    /**
+     * Phone Check whether there is enough space
+     *
+     * @return true if There is otherwise no
+     */
+    public static boolean enoughSpaceOnPhone(long updateSize) {
+        return getRealSizeOnPhone() > updateSize;
+    }
+
+    /**
+     * Get Phone free space
+     */
+    public static long getRealSizeOnPhone() {
+        File path = Environment.getDataDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long availableBlocks = stat.getAvailableBlocks();
+        long realSize = blockSize * availableBlocks;
+        return realSize;
+    }
+
 }

@@ -1,11 +1,16 @@
 package com.bhumik.practiseproject.utils;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,10 +21,16 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 public class Utils {
 
@@ -86,6 +97,12 @@ public class Utils {
             //Setting DrawerLayout property
             drawerLayout.setFitsSystemWindows(false);
         }
+    }
+
+    public static void CopyText(Context context,String content){
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("joke",content);
+        clipboardManager.setPrimaryClip(clipData);
     }
 
     public static int maxAvailMemory() {
@@ -155,4 +172,56 @@ public class Utils {
         }
         return sb.toString();
     }
+
+
+
+
+
+
+
+
+
+
+    public static class rxUtils{
+/*        public static Observable<Uri> saveImageAndGetPathObservable(Context context, String url, String title) {
+            return Observable.create(new Observable.OnSubscribe<Bitmap>() {
+                @Override public void call(Subscriber<? super Bitmap> subscriber) {
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = getbitmap();//TODO - use picasso or else- Picasso.with(context).load(url).get();
+                    } catch (IOException e) {
+                        subscriber.onError(e);
+                    }
+                    if (bitmap == null) {
+                        subscriber.onError(new Exception("无法下载到图片"));
+                    }
+                    subscriber.onNext(bitmap);
+                    subscriber.onCompleted();
+                }
+            }).flatMap(bitmap -> {
+                File appDir = new File(Environment.getExternalStorageDirectory(), "Meizhi");
+                if (!appDir.exists()) {
+                    appDir.mkdir();
+                }
+                String fileName = title.replace('/', '-') + ".jpg";
+                File file = new File(appDir, fileName);
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    assert bitmap != null;
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    outputStream.flush();
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Uri uri = Uri.fromFile(file);
+                // 通知图库更新
+                Intent scannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri);
+                context.sendBroadcast(scannerIntent);
+                return Observable.just(uri);
+            }).subscribeOn(Schedulers.io());
+        }*/
+    }
+
 }

@@ -1,14 +1,19 @@
 package com.bhumik.practiseproject.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -242,4 +247,128 @@ public class DeviceUtils {
         return realSize;
     }
 
+
+    /**
+     * isLandscape
+     * @param context
+     * @return
+     */
+    public static boolean isLandscape(Context context) {
+        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+    }
+
+    /**
+     * isPortrait
+     * @param context
+     * @return
+     */
+    public static boolean isPortrait(Context context) {
+        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+    }
+
+
+    public static int getScreenBrightnessModeState(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.SCREEN_BRIGHTNESS_MODE,
+                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+    }
+    /**
+     * Brightness acquisition system requires permission WRITE_SETTINGS
+     *
+     * @param context context
+     * @return Brightness , range is 0-255 ; the default 255
+     */
+    public static int getScreenBrightness(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.SCREEN_BRIGHTNESS, 255);
+    }
+    public static boolean setScreenBrightness(Context context,
+                                              int screenBrightness) {
+        int brightness = screenBrightness;
+        if (screenBrightness < 1) {
+            brightness = 1;
+        } else if (screenBrightness > 255) {
+            brightness = screenBrightness % 255;
+            if (brightness == 0) {
+                brightness = 255;
+            }
+        }
+        boolean result = Settings.System.putInt(context.getContentResolver(),
+                Settings.System.SCREEN_BRIGHTNESS, brightness);
+        return result;
+    }
+
+
+    /**
+     * Get screen sleep time , you need permission WRITE_SETTINGS
+     * @param context context
+     * @return Screen sleep time , in milliseconds , default 30,000
+     */
+    public static int getScreenSleepTime(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.SCREEN_OFF_TIMEOUT, 30000);
+    }
+    /**
+     * Sleep Time setting screen , you need permission WRITE_SETTINGS
+     * @param context context
+     * @return Setup is successful
+     */
+    public static boolean setScreenSleepTime(Context context, int millis) {
+        return Settings.System.putInt(context.getContentResolver(),
+                Settings.System.SCREEN_OFF_TIMEOUT, millis);
+    }
+
+
+    /**
+     * Get flight mode state, you need permission WRITE_APN_SETTINGS
+     *
+     * @param context context
+     * @return 1 : Open ; 0: Off ; Default : Off
+     */
+    @SuppressWarnings("deprecation")
+    public static int getAirplaneModeState(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.AIRPLANE_MODE_ON, 0);
+        } else {
+            return Settings.Global.getInt(context.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0);
+        }
+    }
+
+    /**
+     *Analyzing the flight mode is turned on , you need permission WRITE_APN_SETTINGS
+     *
+     * @param context context
+     * @return rue: open ; false: Close ; off by default
+     */
+    public static boolean isAirplaneModeOpen(Context context) {
+        return getAirplaneModeState(context) == 1;
+    }
+
+    /**
+     * Flight mode set state authority needs WRITE_APN_SETTINGS
+     *
+     * @param context context
+     * @param enable Flight mode status
+     * @return Setup is successful
+     */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @SuppressWarnings("deprecation")
+    public static boolean setAirplaneMode(Context context, boolean enable) {
+        boolean result = true;
+        // If the current state and the state to set the flight mode is not the same
+        if (isAirplaneModeOpen(context) != enable) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                result = Settings.System.putInt(context.getContentResolver(),
+                        Settings.System.AIRPLANE_MODE_ON, enable ? 1 : 0);
+            } else {
+                result = Settings.Global.putInt(context.getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, enable ? 1 : 0);
+            }
+            // Send flight mode has been changed broadcasting
+            context.sendBroadcast(new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED));
+        }
+        return result;
+    }
 }

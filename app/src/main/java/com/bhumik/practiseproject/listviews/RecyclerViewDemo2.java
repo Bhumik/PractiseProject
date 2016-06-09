@@ -38,8 +38,8 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
         setContentView(R.layout.activity_recyclerdemo);
         setTitle("RecyclerViewDemo2");
         mRecyclerView = (RecyclerView) findViewById(R.id.rcvview_demo);
-        initRecyclerView(mRecyclerView);
 
+        initRecyclerView(mRecyclerView);
     }
 
 
@@ -61,19 +61,18 @@ public class RecyclerViewDemo2 extends AppCompatActivity {
         mAdapter = new MyAdapter(getData());
         recyclerView.setAdapter(mAdapter);
     }
-
     private void initItemDecoration(RecyclerView recyclerView) {
         recyclerView.addItemDecoration(new MyItemDecoration(this));
     }
-
     /**
      * Initialize RecyclerView (ItemAnimator) project Anime
-     *
      * @param recyclerView master control
      */
     private void initItemAnimator(RecyclerView recyclerView) {
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // default animation
     }
+
+
 
     /**
      * Analog data

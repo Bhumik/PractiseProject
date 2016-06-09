@@ -28,6 +28,8 @@ import com.bhumik.practiseproject.fab.FABDemo;
 import com.bhumik.practiseproject.image.ImageOps;
 import com.bhumik.practiseproject.image.PhotoWallLruDemo;
 import com.bhumik.practiseproject.intent.IntentDemo;
+import com.bhumik.practiseproject.listviews.RecyclerViewGridDemo;
+import com.bhumik.practiseproject.listviews.recylerviewhinv.RecycleViewHinVDemo;
 import com.bhumik.practiseproject.loader.LoaderContactDemo;
 import com.bhumik.practiseproject.misc.HandlersDemo;
 import com.bhumik.practiseproject.network.volley.VolleyDemo;
@@ -85,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.addItem(WhatsUpUI.class, "Whatsup like profile UI Demo");
         arrayAdapter.addItem(SpannableDemo.class, "Styling - Spannable Text Demo");
         arrayAdapter.addItem(RecyclerViewDemo.class, "RecyclerViewDemo");
+        arrayAdapter.addItem(RecyclerViewGridDemo.class, "RecyclerViewGridDemo ");
         arrayAdapter.addItem(RecyclerViewDemo2.class, "RecyclerViewDemo 2 waterfall");
+        arrayAdapter.addItem(RecycleViewHinVDemo.class, "RecyclerView Hinv - horizontal recylerview in vertical recycleview");
         arrayAdapter.addItem(UniversalListDemo.class, "Listview with Custom Universal Adapter");
         arrayAdapter.addItem(DataBindDemo.class, "DataBind Demo");
         arrayAdapter.addItem(XtraDemo.class, "== XtraDemo ==");

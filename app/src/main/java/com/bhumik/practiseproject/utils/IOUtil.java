@@ -98,6 +98,28 @@ public class IOUtil {
         return buffer.toByteArray();
     }
 
+    /**
+     * Enter transfer byte []
+     *
+     * @param inStream InputStream
+     * @return Byte array
+     */
+    public static final byte[] input2byte(InputStream inStream) {
+        if (inStream == null)
+            return null;
+        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+        byte[] buff = new byte[100];
+        int rc = 0;
+        try {
+            while ((rc = inStream.read(buff, 0, 100)) > 0) {
+                swapStream.write(buff, 0, rc);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return swapStream.toByteArray();
+    }
+
     public static String getStreamEncoding(InputStream is) throws IOException {
         BufferedInputStream bis = new BufferedInputStream(is);
         bis.mark(2);

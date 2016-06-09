@@ -27,6 +27,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -224,4 +226,40 @@ public class Utils {
         }*/
     }
 
+
+
+    /**
+     * isEmail2
+     *
+     * @param email Email may be a string
+     * @return isEmail2
+     */
+    public static boolean isEmail(String email) {
+        Pattern pattern = Pattern
+                .compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    /**
+     * isEmail2
+     *
+     * @param data Email may be a string
+     * @return isEmail2
+     */
+    public static boolean isEmail2(String data) {
+        String expr = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+        return data.matches(expr);
+    }
+
+    /**
+     * Mobile phone number verification
+     *
+     * @param data It may be the phone number string
+     * @return Is your phone number
+     */
+    public static boolean isMobileNumber(String data) {
+        String expr = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
+        return data.matches(expr);
+    }
 }

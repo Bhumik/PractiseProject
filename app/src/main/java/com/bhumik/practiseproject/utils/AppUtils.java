@@ -181,9 +181,9 @@ public class AppUtils {
         File out = new File(newFile + packageName + ".apk");
         if (!out.exists()) {
             out.createNewFile();
-            Log.i(TAG, "文件备份成功！" + "存放于" + newFile + "目录下");
+            Log.i(TAG, "File Backup Success！" + "Deposited in" + newFile + "Directory");
         } else {
-            Log.i(TAG, "文件备份成功！" + "存放于" + newFile + "目录下");
+            Log.i(TAG, "File Backup Success！" + "Deposited in" + newFile + "Directory");
         }
 
         FileInputStream fis = new FileInputStream(in);
@@ -201,4 +201,46 @@ public class AppUtils {
         fos.close();
     }
 
+
+    /**
+     * installApk
+     *
+     * @param context context
+     * @param file    APK file
+     */
+    public static void installApk(Context context, File file) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file),
+                "application/vnd.android.package-archive");
+        context.startActivity(intent);
+    }
+
+    /**
+     * installApk
+     *
+     * @param context context
+     * @param file    APK file uri
+     */
+    public static void installApk(Context context, Uri file) {
+        Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(file, "application/vnd.android.package-archive");
+        context.startActivity(intent);
+    }
+
+    /**
+     * uninstallApk
+     *
+     * @param context     context
+     * @param packageName packageName
+     */
+    public static void uninstallApk(Context context, String packageName) {
+        Intent intent = new Intent(Intent.ACTION_DELETE);
+        Uri packageURI = Uri.parse("package:" + packageName);
+        intent.setData(packageURI);
+        context.startActivity(intent);
+    }
 }

@@ -1,4 +1,4 @@
-package com.bhumik.practiseproject.listviews;
+package com.bhumik.practiseproject.listviews.rcviewEndless;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +9,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
  * Created by bhumik on 9/6/16.
  */
 public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnScrollListener {
+    RecyclerView.LayoutManager mLayoutManager;
     // The minimum amount of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 5;
@@ -20,8 +21,6 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
     private boolean loading = true;
     // Sets the starting page index
     private int startingPageIndex = 0;
-
-    RecyclerView.LayoutManager mLayoutManager;
 
     public EndlessRecyclerViewScrollListener(LinearLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;

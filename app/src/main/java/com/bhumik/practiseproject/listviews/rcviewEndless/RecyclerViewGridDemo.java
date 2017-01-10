@@ -1,20 +1,16 @@
-package com.bhumik.practiseproject.listviews;
+package com.bhumik.practiseproject.listviews.rcviewEndless;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -22,15 +18,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bhumik.practiseproject.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,6 +33,15 @@ public class RecyclerViewGridDemo extends AppCompatActivity {
     private RecyclerGridAdapter recyclerGridAdapter;
     private Toolbar toolbar;
 
+    public static int getScreenWidth(Context c) {
+
+        WindowManager wm = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +52,6 @@ public class RecyclerViewGridDemo extends AppCompatActivity {
         setupRecyclerView();
 
     }
-
-
 
     public void setupToolbar() {
         toolbar = (Toolbar) findViewById(R.id.recycle_toolbar);
@@ -97,21 +95,20 @@ public class RecyclerViewGridDemo extends AppCompatActivity {
 
     }
 
+    public void addLog(String msg) {
+        Log.d(TAG, "== " + msg + "==");
 
+    }
 
     public class RecyclerGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         private final int PHOTO_ANIMATION_DELAY = 600;
         private final Interpolator INTERPOLATOR = new DecelerateInterpolator();
-
-
+        int items = 30;
         private Context context;
         private int cellSize;
-
         private boolean lockedAnimations = false;
         private int lastAnimatedItem = -1;
-
-        int items=30;
 
         public RecyclerGridAdapter(Context context) {
             this.context = context;
@@ -189,6 +186,9 @@ public class RecyclerViewGridDemo extends AppCompatActivity {
             notifyDataSetChanged();
         }
 
+        public void setLockedAnimations(boolean lockedAnimations) {
+            this.lockedAnimations = lockedAnimations;
+        }
 
         class PhotoViewHolder extends RecyclerView.ViewHolder {
             @Bind(R.id.flRoot)
@@ -201,23 +201,6 @@ public class RecyclerViewGridDemo extends AppCompatActivity {
                 ButterKnife.bind(this, view);
             }
         }
-
-        public void setLockedAnimations(boolean lockedAnimations) {
-            this.lockedAnimations = lockedAnimations;
-        }
-    }
-
-    public void addLog(String msg){
-        Log.d(TAG,"== "+msg+"==");
-
-    }
-    public static int getScreenWidth(Context c) {
-
-            WindowManager wm = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
-            Display display = wm.getDefaultDisplay();
-            Point size = new Point();
-            display.getSize(size);
-            return size.x;
     }
 
 

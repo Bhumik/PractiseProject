@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/PractiseProject.iml" filepath="$PROJECT_DIR$/PractiseProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/appTest/appTest.iml" filepath="$PROJECT_DIR$/appTest/appTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/appTest/apppractisetest.iml" filepath="$PROJECT_DIR$/appTest/apppractisetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/threadpool/threadpool.iml" filepath="$PROJECT_DIR$/threadpool/threadpool.iml" />
     </modules>
   </component>
 </project>

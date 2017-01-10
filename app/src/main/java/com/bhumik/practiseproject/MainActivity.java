@@ -28,8 +28,12 @@ import com.bhumik.practiseproject.fab.FABDemo;
 import com.bhumik.practiseproject.image.ImageOps;
 import com.bhumik.practiseproject.image.PhotoWallLruDemo;
 import com.bhumik.practiseproject.intent.IntentDemo;
-import com.bhumik.practiseproject.listviews.RecyclerViewGridDemo;
+import com.bhumik.practiseproject.listviews.RecyclerViewDemo2;
+import com.bhumik.practiseproject.listviews.rcviewEndless.RecyclerViewDemo;
+import com.bhumik.practiseproject.listviews.rcviewEndless.RecyclerViewGridDemo;
+import com.bhumik.practiseproject.listviews.rcviewEndless.RecyclerViewLoadMore;
 import com.bhumik.practiseproject.listviews.recylerviewhinv.RecycleViewHinVDemo;
+import com.bhumik.practiseproject.listviews.universalList.UniversalListDemo;
 import com.bhumik.practiseproject.loader.LoaderContactDemo;
 import com.bhumik.practiseproject.misc.HandlersDemo;
 import com.bhumik.practiseproject.network.volley.VolleyDemo;
@@ -40,9 +44,6 @@ import com.bhumik.practiseproject.styling.SpannableDemo;
 import com.bhumik.practiseproject.ui.CanvasDemoActivity;
 import com.bhumik.practiseproject.ui.WhatsUpUI;
 import com.bhumik.practiseproject.utils.Utils;
-import com.bhumik.practiseproject.listviews.RecyclerViewDemo;
-import com.bhumik.practiseproject.listviews.RecyclerViewDemo2;
-import com.bhumik.practiseproject.listviews.universalList.UniversalListDemo;
 import com.bhumik.practiseproject.xml.XmlParseDemo;
 import com.bhumik.practiseproject.xtra.XtraDemo;
 
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.addItem(WhatsUpUI.class, "Whatsup like profile UI Demo");
         arrayAdapter.addItem(SpannableDemo.class, "Styling - Spannable Text Demo");
         arrayAdapter.addItem(RecyclerViewDemo.class, "RecyclerViewDemo");
+        arrayAdapter.addItem(RecyclerViewLoadMore.class, "RecyclerViewLoadMore");
+
         arrayAdapter.addItem(RecyclerViewGridDemo.class, "RecyclerViewGridDemo ");
         arrayAdapter.addItem(RecyclerViewDemo2.class, "RecyclerViewDemo 2 waterfall");
         arrayAdapter.addItem(RecycleViewHinVDemo.class, "RecyclerView Hinv - horizontal recylerview in vertical recycleview");

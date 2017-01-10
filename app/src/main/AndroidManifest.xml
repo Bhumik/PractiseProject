@@ -36,8 +36,9 @@
 
         <activity android:name="com.bhumik.practiseproject.image.PhotoWallLruDemo" />
 
-        <activity android:name="com.bhumik.practiseproject.listviews.RecyclerViewDemo" />
-        <activity android:name="com.bhumik.practiseproject.listviews.RecyclerViewGridDemo" />
+        <activity android:name=".listviews.rcviewEndless.RecyclerViewDemo" />
+        <activity android:name=".listviews.rcviewEndless.RecyclerViewLoadMore" />
+        <activity android:name=".listviews.rcviewEndless.RecyclerViewGridDemo" />
         <activity android:name="com.bhumik.practiseproject.listviews.RecyclerViewDemo2" android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name="com.bhumik.practiseproject.listviews.recylerviewhinv.RecycleViewHinVDemo" android:theme="@style/AppThemeNoActionBar" />
         <activity android:name="com.bhumik.practiseproject.listviews.universalList.UniversalListDemo" />
